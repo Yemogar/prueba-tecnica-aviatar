@@ -1,0 +1,41 @@
+<section>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Signup Form</mat-card-title>
+            <mat-card-subtitle>It's quick and easy!</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form class="register-form">
+                <div class="flex-row">
+                    <mat-form-field appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput placeholder="Enter your name" name="firstName">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput placeholder="Enter your last name" name="lastName">
+                    </mat-form-field>
+                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Enter your username" name="username">
+                </mat-form-field>
+                <div class="flex-row">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Enter your password" value="" name="password" type="password">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Confirm</mat-label>
+                        <input matInput placeholder="Confirm your password" value="" name="confirmPassword" type="password">
+                    </mat-form-field>
+                </div>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary">Signup</button>
+            <mat-divider></mat-divider>
+            <h3>Do you have an account? Login now</h3>
+        </mat-card-actions>
+    </mat-card>
+</section>
