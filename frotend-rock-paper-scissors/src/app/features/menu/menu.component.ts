@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu.component.sass']
 })
 export class MenuComponent {
-
+  public logout(): void {}
 }
+

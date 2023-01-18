@@ -12,9 +12,9 @@
                   <mat-card-title>Menu</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <button mat-stroked-button color="primary">Play</button>
-                    <button mat-stroked-button color="primary">Stadistics</button>
-                    <button mat-stroked-button color="primary">Logout</button>
+                    <a mat-stroked-button routerLink="/game" color="primary">Play</a>
+                    <a mat-stroked-button routerLink="/statistics" color="primary">Stadistics</a>
+                    <a mat-stroked-button (click)="logout()" color="primary">Logout</a>
                 </mat-card-content>
               </mat-card>
         </div>
