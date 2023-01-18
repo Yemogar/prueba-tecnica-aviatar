@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./features/menu/menu.module').then(m => m.MenuModule)
   }
 ];
 
