@@ -3,7 +3,9 @@
         <h1>Yeray</h1>
     </div>
     <div class="result">
-        <h1> 0 - 0</h1>
+        <h1 *ngIf="(gameScoreboard$ | async) as gameScoreboard">
+            {{gameScoreboard.playerPoints + '-' + gameScoreboard.computerPoints}}
+        </h1>
     </div>
     <div class="computer">
         <h1>Computer</h1>

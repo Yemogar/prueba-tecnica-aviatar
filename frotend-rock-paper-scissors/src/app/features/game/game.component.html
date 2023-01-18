@@ -1,5 +1,13 @@
 <div>
     <app-scoreboard></app-scoreboard>
-    <app-battleground></app-battleground>
-    <app-rock-paper-scissors-selector></app-rock-paper-scissors-selector>
+    <app-battleground
+        [optionSelectedByPlayer]="optionSelectedByPlayer"
+        [optionSelectedByComputer]="optionSelectedByComputer"
+        [gameResult]="gameResult">
+    </app-battleground>
+    <app-rock-paper-scissors-selector 
+        (optionSelectedByPlayer)="onOptionSelectedByPlayer($event)"
+        (resetGameByPlayer)="onResetGameByPlayer($event)"
+        (onClickBackButton)="onClickBackButton($event)">
+    </app-rock-paper-scissors-selector>
 </div>

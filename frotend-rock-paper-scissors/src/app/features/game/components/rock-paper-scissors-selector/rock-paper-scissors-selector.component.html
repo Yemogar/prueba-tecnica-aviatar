@@ -1,14 +1,18 @@
 <div>
     <h1>Make your move!</h1>
     <div class="selector">
-        <div class="box rock">
+        <div class="box rock" (click)="selectOption(gameOptions.Rock)">
             <img src="/assets/imgs/rock.jpg">
         </div>
-        <div class="box papper">
+        <div class="box papper" (click)="selectOption(gameOptions.Paper)">
             <img src="/assets/imgs/paper.jpg">
         </div>
-        <div class="box scissors">
+        <div class="box scissors" (click)="selectOption(gameOptions.Scissors)">
             <img src="/assets/imgs/scissors.jpg">
         </div>
+    </div>
+    <div class="actions">
+        <button class="retry-button" (click)="resetGame()"></button>
+        <button class="back-button" (click)="backButton()"></button>
     </div>
 </div>

@@ -1,14 +1,38 @@
 <div class="battleground">
     <div class="user-selection">
-        <img src="/assets/imgs/rock.jpg">
+        <ng-container [ngSwitch]="optionSelectedByPlayer">
+            <ng-template [ngSwitchCase]="gameOptions.Rock">
+                <img src="/assets/imgs/rock.jpg">
+            </ng-template>
+            <ng-template [ngSwitchCase]="gameOptions.Paper">
+                <img src="/assets/imgs/paper.jpg">
+            </ng-template>
+            <ng-template [ngSwitchCase]="gameOptions.Scissors">
+                <img src="/assets/imgs/scissors.jpg">
+            </ng-template>
+            <ng-template ngSwitchDefault>
+            </ng-template>
+        </ng-container>
     </div>
     <div class="result">
-        <h1>You win!</h1>
-        <h2>Rock beats scissors</h2>
-        <button class="retry-button"></button>
-        <button class="back-button"></button>
+        <ng-container *ngIf="gameResult">
+            <h1>{{ gameResult.winner }}</h1>
+            <h2>{{ gameResult.reasonOfVictory }}</h2>
+        </ng-container>
     </div>
     <div class="computer-selection">
-        <img src="/assets/imgs/scissors.jpg">
+        <ng-container [ngSwitch]="optionSelectedByComputer">
+            <ng-template [ngSwitchCase]="gameOptions.Rock">
+                <img src="/assets/imgs/rock.jpg">
+            </ng-template>
+            <ng-template [ngSwitchCase]="gameOptions.Paper">
+                <img src="/assets/imgs/paper.jpg">
+            </ng-template>
+            <ng-template [ngSwitchCase]="gameOptions.Scissors">
+                <img src="/assets/imgs/scissors.jpg">
+            </ng-template>
+            <ng-template ngSwitchDefault>
+            </ng-template>
+        </ng-container>
     </div>
 </div>
