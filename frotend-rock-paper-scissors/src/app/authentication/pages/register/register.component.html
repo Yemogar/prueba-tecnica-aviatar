@@ -5,37 +5,31 @@
             <mat-card-subtitle>It's quick and easy!</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <form class="register-form">
+            <form id="signupForm" [formGroup]="signupForm" (ngSubmit)="signup()" class="register-form">
                 <div class="flex-row">
                     <mat-form-field appearance="outline">
                         <mat-label>First Name</mat-label>
-                        <input matInput placeholder="Enter your name" name="firstName">
+                        <input matInput placeholder="Enter your name" name="firstName" formControlName="firstName">
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Last Name</mat-label>
-                        <input matInput placeholder="Enter your last name" name="lastName">
+                        <input matInput placeholder="Enter your last name" name="lastName" formControlName="lastName">
                     </mat-form-field>
                 </div>
                 <mat-form-field appearance="outline">
                     <mat-label>Username</mat-label>
-                    <input matInput placeholder="Enter your username" name="username">
+                    <input matInput placeholder="Enter your username" name="username" formControlName="username">
                 </mat-form-field>
-                <div class="flex-row">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Password</mat-label>
-                        <input matInput placeholder="Enter your password" value="" name="password" type="password">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Confirm</mat-label>
-                        <input matInput placeholder="Confirm your password" value="" name="confirmPassword" type="password">
-                    </mat-form-field>
-                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Enter your password" value="" name="password" type="password" formControlName="password">
+                </mat-form-field>
             </form>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary">Signup</button>
+            <button mat-raised-button [disabled]="!this.signupForm.valid" color="primary" type="submit" form="signupForm">Signup</button>
             <mat-divider></mat-divider>
-            <h3>Do you have an account? Login now</h3>
+            <h3>Do you have an account? <a (click)="navigateToLogin()">Login now</a></h3>
         </mat-card-actions>
     </mat-card>
 </section>
