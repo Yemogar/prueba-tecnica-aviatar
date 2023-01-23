@@ -1,4 +1,4 @@
-# Aviatar Technical Test
+# Technical Test Rock Paper Scissors
 ## Yeray Molina García
 
 ## Introduction
