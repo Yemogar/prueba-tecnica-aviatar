@@ -11,22 +11,22 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "USER")
+@Table(name = "users")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name="NAME")
+	@Column(name="name")
 	private String name;
 	
-	@Column(name="LAST_NAME")
+	@Column(name="last_name")
 	private String lastName;
 
-	@Column(name="USERNAME")
+	@Column(name="username")
 	private String username;
 	
-	@Column(name="PASSWORD", length = 1500)
+	@Column(name="password")
 	private String password;
 
 	public User(Integer id, String name, String lastName, String username, String password) {

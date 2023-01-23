@@ -3,7 +3,7 @@
         <mat-card-header>
             <mat-card-title>Statistics</mat-card-title>
         </mat-card-header>
-        <app-statistics-table [gameResults]="gameResults"></app-statistics-table>
+        <app-statistics-table [gameResults]="(gameResults$ | async)"></app-statistics-table>
         <app-statistics-vertical-chart></app-statistics-vertical-chart>
         <div class="back-button-container ">
             <button class="back-button" (click)="goBack()"></button>

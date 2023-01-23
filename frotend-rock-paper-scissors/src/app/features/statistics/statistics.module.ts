@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { StatisticsRoutingModule } from './statistics-routing.module';

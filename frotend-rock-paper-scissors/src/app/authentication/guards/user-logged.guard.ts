@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 
 import { map, Observable } from 'rxjs';
+import { UserLogin } from '../models/user-login';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({
@@ -10,8 +11,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class UserLoggedGuard implements CanActivate, CanLoad {
 
   constructor(
-    private authenticationService: AuthenticationService,
-    private router: Router) {}
+    private authenticationService: AuthenticationService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -19,12 +19,7 @@ export class UserLoggedGuard implements CanActivate, CanLoad {
     return this.authenticationService.userLogged$
       .pipe(
         map(userLogged => {
-          const isTheUserLogged: boolean = userLogged.username !== '' && userLogged.password !== '';
-          if (isTheUserLogged) {
-            return isTheUserLogged;
-          } else {
-            return this.router.parseUrl('/login');
-          }
+          return this.authenticationService.checkIfUserIsLogged(userLogged);
         })
       );
   }
@@ -33,13 +28,8 @@ export class UserLoggedGuard implements CanActivate, CanLoad {
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.authenticationService.userLogged$
       .pipe(
-        map(userLogged => {
-          const isTheUserLogged: boolean = userLogged.username !== '' && userLogged.password !== '';
-          if (isTheUserLogged) {
-            return isTheUserLogged;
-          } else {
-            return this.router.parseUrl('/login');
-          }
+        map((userLogged: UserLogin) => {
+          return this.authenticationService.checkIfUserIsLogged(userLogged);
         })
       );
   }

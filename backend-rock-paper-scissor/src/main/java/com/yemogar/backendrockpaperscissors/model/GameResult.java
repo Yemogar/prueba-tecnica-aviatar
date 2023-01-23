@@ -10,22 +10,22 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "GAME_RESULT")
+@Table(name = "game_results")
 public class GameResult {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name="WINNER")
+	@Column(name="winner")
 	private String winner;
 	
-	@Column(name="OPTION_SELECTED_BY_PLAYER")
+	@Column(name="option_selected_by_player")
 	private String optionSelectedByPlayer;
 	
-	@Column(name="OPTION_SELECTED_BY_COMPUTER")
+	@Column(name="option_selected_by_computer")
 	private String optionSelectedByComputer;
 	
-	@Column(name="PLAYER_USERNAME")
+	@Column(name="player_username")
 	private String playerUsername;
 
 	public GameResult(Integer id, String winner, String optionSelectedByPlayer, String optionSelectedByComputer,

@@ -21,14 +21,20 @@ public class AuthService {
 		if (usernameAlreadyExist) {
 			throw new UserAlreadyExistException("User already exist");
 		} else {
-			String encodedPassword = new BCryptPasswordEncoder().encode(newUser.getPassword());
-	        newUser.setPassword(encodedPassword);
+			User newUserWitPasswordEncoded = this.encodeUserPassword(newUser);
 
-			return this.userRepository.save(newUser);		
+			return this.userRepository.save(newUserWitPasswordEncoded);		
 		}
 	}
 	
 	public Optional<User> getUserByUsername(String username) {
 		return this.userRepository.findByUsername(username);
+	}
+	
+	private User encodeUserPassword(User user) {
+		String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+		user.setPassword(encodedPassword);
+
+        return user;
 	}
 }

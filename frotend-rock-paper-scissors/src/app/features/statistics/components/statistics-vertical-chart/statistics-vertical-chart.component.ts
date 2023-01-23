@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+
 import { Statistic } from '../../models/statistic';
 import { StatisticsService } from '../../services/statistics.service';
 
@@ -13,8 +14,8 @@ export class StatisticsVerticalChartComponent implements OnInit, OnDestroy {
 
   view: [number, number] = [500, 400];
 
-  dataForChartChoices: any[] = [];
-  dataForChartResults: any[] = [];
+  dataForChartChoices: Object[] = [];
+  dataForChartResults: Object[] = [];
 
   // options
   showXAxis: boolean = true;

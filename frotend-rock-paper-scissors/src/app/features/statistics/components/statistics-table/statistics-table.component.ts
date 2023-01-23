@@ -1,6 +1,6 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTableDataSourcePaginator } from '@angular/material/table';
 import { GameResult } from 'src/app/features/game/models/game-result';
 
 @Component({
@@ -10,8 +10,18 @@ import { GameResult } from 'src/app/features/game/models/game-result';
 })
 export class StatisticsTableComponent {
   @Input()
-  gameResults: GameResult[] = [];
+  gameResults!: GameResult[] | null;
 
   displayedColumns: string[] = ['position', 'winner', 'optionSelectedByPlayer', 'optionSelectedByComputer'];
-  dataSource = new MatTableDataSource<GameResult>(this.gameResults);
+  dataSource: MatTableDataSource<GameResult, MatTableDataSourcePaginator> | undefined;
+
+  constructor() {
+    this.loadDataSource();
+  }
+
+  loadDataSource(): void {
+    if (this.gameResults) {
+      this.dataSource = new MatTableDataSource<GameResult>(this.gameResults);
+    }
+  }
 }

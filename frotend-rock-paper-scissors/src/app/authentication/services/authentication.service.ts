@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, UrlTree } from '@angular/router';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -52,5 +52,14 @@ export class AuthenticationService {
 
   public clearToken(): void {
     localStorage.removeItem('token');
+  }
+
+  public checkIfUserIsLogged(userLogged: UserLogin): boolean | UrlTree {
+    const isTheUserLogged: boolean = userLogged.username !== '' && userLogged.password !== '';
+    if (isTheUserLogged) {
+      return isTheUserLogged;
+    } else {
+      return this.router.parseUrl('/login');
+    }
   }
 }

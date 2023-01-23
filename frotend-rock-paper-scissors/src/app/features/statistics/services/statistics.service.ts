@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
+
 import { UserLogin } from 'src/app/authentication/models/user-login';
 import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
-
 import { environment } from 'src/environments/environment';
 import { GameResult } from '../../game/models/game-result';
+import { GameOptions } from '../../game/enums/game-options.enum';
+import { WinnerOptions } from '../../game/enums/winner-options.enum';
 import { Statistic } from '../models/statistic';
 
 @Injectable({
@@ -38,38 +40,38 @@ export class StatisticsService {
       ) as Observable<Statistic>;
   }
 
-  loadDataForChartChoices(statistic: Statistic) {
+  loadDataForChartChoices(statistic: Statistic): Object[] {
     return [
       {
-        name: 'Player',
+        name: WinnerOptions.Player,
         series: [
           {
-            name: 'Rock',
+            name: GameOptions.Rock,
             value: statistic.numberOfTimesThatUserPickRock
           },
           {
-            name: 'Paper',
+            name: GameOptions.Paper,
             value: statistic.numberOfTimesThatUserPickPaper
           },
           {
-            name: 'Scissor',
+            name: GameOptions.Scissors,
             value: statistic.numberOfTimesThatUserPickScissor
           }
         ]
       },
       {
-        name: 'Computer',
+        name: WinnerOptions.Computer,
         series: [
           {
-            name: 'Rock',
+            name: GameOptions.Rock,
             value: statistic.numberOfTimesThatComputerPickRock
           },
           {
-            name: 'Paper',
+            name: GameOptions.Paper,
             value: statistic.numberOfTimesThatComputerPickPaper
           },
           {
-            name: 'Scissor',
+            name: GameOptions.Scissors,
             value: statistic.numberOfTimesThatComputerPickScissor
           }
         ]
@@ -77,10 +79,10 @@ export class StatisticsService {
     ];
   }
 
-  loadDataForChartResults(statistic: Statistic) {
+  loadDataForChartResults(statistic: Statistic): Object[] {
     return [
       {
-        name: 'Player',
+        name: WinnerOptions.Player,
         series: [
           {
             name: 'Win',

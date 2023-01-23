@@ -1,25 +1,27 @@
-<table mat-table [dataSource]="gameResults" class="mat-elevation-z8">
+<ng-container *ngIf="gameResults">
+    <table mat-table [dataSource]="gameResults" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let gameResult; let index = index"> {{ index + 1 }} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="winner">
-        <th mat-header-cell *matHeaderCellDef> Winner </th>
-        <td mat-cell *matCellDef="let gameResult"> {{gameResult.winner}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="optionSelectedByPlayer">
-        <th mat-header-cell *matHeaderCellDef> Option Selected By Player </th>
-        <td mat-cell *matCellDef="let gameResult"> {{gameResult.optionSelectedByPlayer}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="optionSelectedByComputer">
-        <th mat-header-cell *matHeaderCellDef> Option Selected By Computer </th>
-        <td mat-cell *matCellDef="let gameResult"> {{gameResult.optionSelectedByComputer}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let gameResult; let index = index"> {{ index + 1 }} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="winner">
+            <th mat-header-cell *matHeaderCellDef> Winner </th>
+            <td mat-cell *matCellDef="let gameResult"> {{gameResult.winner}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="optionSelectedByPlayer">
+            <th mat-header-cell *matHeaderCellDef> Option Selected By Player </th>
+            <td mat-cell *matCellDef="let gameResult"> {{gameResult.optionSelectedByPlayer}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="optionSelectedByComputer">
+            <th mat-header-cell *matHeaderCellDef> Option Selected By Computer </th>
+            <td mat-cell *matCellDef="let gameResult"> {{gameResult.optionSelectedByComputer}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</ng-container>

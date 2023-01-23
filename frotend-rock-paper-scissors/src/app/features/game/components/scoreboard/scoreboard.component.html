@@ -1,6 +1,6 @@
 <div class="scoreboard">
     <div class="player">
-        <h1>Yeray</h1>
+        <h1 *ngIf="(userLogged$ | async) as userLogged">{{ userLogged.username | titlecase }}</h1>
     </div>
     <div class="result">
         <h1 *ngIf="(gameScoreboard$ | async) as gameScoreboard">
