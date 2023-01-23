@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, switchMap } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 
 import { UserLogin } from 'src/app/authentication/models/user-login';
 import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
@@ -9,6 +9,7 @@ import { GameResult } from '../../game/models/game-result';
 import { GameOptions } from '../../game/enums/game-options.enum';
 import { WinnerOptions } from '../../game/enums/winner-options.enum';
 import { Statistic } from '../models/statistic';
+import { StatisticsCharts } from '../models/statistics-charts';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,18 @@ export class StatisticsService {
           }
         )
       ) as Observable<Statistic>;
+  }
+
+  getStatisticsForCharts(): Observable<StatisticsCharts> {
+    return this.getStatisticsByUsername()
+      .pipe(
+        map((statistic: Statistic) => {
+          return {
+            dataForChartChoice: this.loadDataForChartChoices(statistic),
+            dataForChartResults: this.loadDataForChartResults(statistic)
+          }
+        })
+      );
   }
 
   loadDataForChartChoices(statistic: Statistic): Object[] {

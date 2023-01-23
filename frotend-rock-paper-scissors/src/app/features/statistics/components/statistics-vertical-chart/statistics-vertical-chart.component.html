@@ -1,6 +1,7 @@
-<ngx-charts-bar-vertical-2d
+<ng-container *ngIf="statisticsForCharts">
+  <ngx-charts-bar-vertical-2d
   [view]="view"
-  [results]="dataForChartChoices"
+  [results]="statisticsForCharts.dataForChartChoice"
   [gradient]="gradient"
   [xAxis]="showXAxis"
   [yAxis]="showYAxis"
@@ -8,14 +9,11 @@
   [showXAxisLabel]="showXAxisLabel"
   [showYAxisLabel]="showYAxisLabel"
   [yAxisLabel]="yAxisLabelChartChoices"
-  [legendTitle]="legendTitleChartChoices"
-  (select)="onSelect($event)"
-  (activate)="onActivate($event)"
-  (deactivate)="onDeactivate($event)">
-</ngx-charts-bar-vertical-2d>
-<ngx-charts-bar-vertical-2d
+  [legendTitle]="legendTitleChartChoices">
+  </ngx-charts-bar-vertical-2d>
+  <ngx-charts-bar-vertical-2d
   [view]="view"
-  [results]="dataForChartResults"
+  [results]="statisticsForCharts.dataForChartResults"
   [gradient]="gradient"
   [xAxis]="showXAxis"
   [yAxis]="showYAxis"
@@ -23,8 +21,6 @@
   [showXAxisLabel]="showXAxisLabel"
   [showYAxisLabel]="showYAxisLabel"
   [yAxisLabel]="yAxisLabelChartChoices"
-  [legendTitle]="legendTitleChartResults"
-  (select)="onSelect($event)"
-  (activate)="onActivate($event)"
-  (deactivate)="onDeactivate($event)">
-</ngx-charts-bar-vertical-2d>
+  [legendTitle]="legendTitleChartResults">
+  </ngx-charts-bar-vertical-2d>
+</ng-container>

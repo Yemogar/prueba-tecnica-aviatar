@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { Component, Input } from '@angular/core';
 import { MatTableDataSource, MatTableDataSourcePaginator } from '@angular/material/table';
 import { GameResult } from 'src/app/features/game/models/game-result';
 
