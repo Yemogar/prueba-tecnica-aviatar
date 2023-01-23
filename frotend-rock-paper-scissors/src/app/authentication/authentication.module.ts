@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -25,6 +26,7 @@ import { RegisterComponent } from './pages/register/register.component';
     MatInputModule,
     MatCardModule,
     MatDividerModule,
+    MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
