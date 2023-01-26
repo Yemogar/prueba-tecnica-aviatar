@@ -1,5 +1,10 @@
 package com.yemogar.backendrockpaperscissors.model;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
 public class Statistic {
 	public int numberOfGameThatUserWin;
 
@@ -18,24 +23,4 @@ public class Statistic {
 	public int numberOfTimesThatComputerPickPaper;
 	
 	public int numberOfTimesThatComputerPickScissor;
-	
-	public Statistic() {
-		
-	}
-
-	public Statistic(int numberOfGameThatUserWin, int numberOfGameThatUserTie,
-			int numberOfGameThatUserLose, int numberOfTimesThatUsersPickRock, int numberOfTimesThatUsersPickPaper,
-			int numberOfTimesThatUsersPickScissor, int numberOfTimesThatComputerPickRock,
-			int numberOfTimesThatComputerPickPaper, int numberOfTimesThatComputerPickScissor) {
-		super();
-		this.numberOfGameThatUserWin = numberOfGameThatUserWin;
-		this.numberOfGameThatUserTie = numberOfGameThatUserTie;
-		this.numberOfGameThatUserLose = numberOfGameThatUserLose;
-		this.numberOfTimesThatUserPickRock = numberOfTimesThatUsersPickRock;
-		this.numberOfTimesThatUserPickPaper = numberOfTimesThatUsersPickPaper;
-		this.numberOfTimesThatUserPickScissor = numberOfTimesThatUsersPickScissor;
-		this.numberOfTimesThatComputerPickRock = numberOfTimesThatComputerPickRock;
-		this.numberOfTimesThatComputerPickPaper = numberOfTimesThatComputerPickPaper;
-		this.numberOfTimesThatComputerPickScissor = numberOfTimesThatComputerPickScissor;
-	}
 }
