@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -23,7 +24,8 @@ import { StatisticsVerticalChartComponent } from './components/statistics-vertic
     StatisticsRoutingModule,
     MatCardModule,
     MatTableModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatPaginatorModule
   ]
 })
 export class StatisticsModule { }
