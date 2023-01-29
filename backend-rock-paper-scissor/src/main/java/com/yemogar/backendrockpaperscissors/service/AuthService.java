@@ -1,6 +1,4 @@
-package com.yemogar.backendrockpaperscissors.services;
-
-import java.util.Optional;
+package com.yemogar.backendrockpaperscissors.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,10 +23,6 @@ public class AuthService {
 
 			return this.userRepository.save(newUserWitPasswordEncoded);		
 		}
-	}
-	
-	public Optional<User> getUserByUsername(String username) {
-		return this.userRepository.findByUsername(username);
 	}
 	
 	private User encodeUserPassword(User user) {

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.yemogar.backendrockpaperscissors.model.GameResult;
 import com.yemogar.backendrockpaperscissors.model.Statistic;
-import com.yemogar.backendrockpaperscissors.services.GameResultService;
+import com.yemogar.backendrockpaperscissors.service.GameResultService;
 
 @RestController
 @RequestMapping("/api/game-results")

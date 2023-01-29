@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yemogar.backendrockpaperscissors.exception.CustomExceptionHandler;
 import com.yemogar.backendrockpaperscissors.exception.UserAlreadyExistException;
 import com.yemogar.backendrockpaperscissors.model.User;
-import com.yemogar.backendrockpaperscissors.services.AuthService;
+import com.yemogar.backendrockpaperscissors.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+	
+	@Autowired
+	private CustomExceptionHandler customExceptionHandler;
 
 	@Autowired
 	private AuthService authService;
@@ -24,12 +28,7 @@ public class AuthController {
 		try {
 			return new ResponseEntity<User>(this.authService.registerUser(newUser), HttpStatus.CREATED);
 		} catch (UserAlreadyExistException exception) {
-			return new ResponseEntity(HttpStatus.CONFLICT);
+			return this.customExceptionHandler.handleUserAlreadyExist(exception);
 		}
-	}
-	
-	@PostMapping("/login")
-	public ResponseEntity<User> login(@RequestBody User userLogin) {		
-		return new ResponseEntity<User>(userLogin, HttpStatus.OK);
 	}
 }

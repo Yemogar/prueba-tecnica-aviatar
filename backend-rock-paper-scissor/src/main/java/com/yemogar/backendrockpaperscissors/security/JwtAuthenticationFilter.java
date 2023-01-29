@@ -11,6 +11,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yemogar.backendrockpaperscissors.model.UserCredentials;
+import com.yemogar.backendrockpaperscissors.model.UserDetailsImpl;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -22,10 +24,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request,
 			HttpServletResponse response) throws AuthenticationException {
-		AuthCredentials authCredentials = new AuthCredentials();
+		UserCredentials authCredentials = new UserCredentials();
 		
 		try {
-			authCredentials = new ObjectMapper().readValue(request.getReader(), AuthCredentials.class);
+			authCredentials = new ObjectMapper().readValue(request.getReader(), UserCredentials.class);
 		} catch (IOException e) {}
 
 		UsernamePasswordAuthenticationToken usernamePAT = new UsernamePasswordAuthenticationToken(

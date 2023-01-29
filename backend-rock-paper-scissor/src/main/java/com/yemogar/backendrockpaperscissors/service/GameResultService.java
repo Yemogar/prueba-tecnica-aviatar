@@ -1,4 +1,4 @@
-package com.yemogar.backendrockpaperscissors.services;
+package com.yemogar.backendrockpaperscissors.service;
 
 import java.util.List;
 
