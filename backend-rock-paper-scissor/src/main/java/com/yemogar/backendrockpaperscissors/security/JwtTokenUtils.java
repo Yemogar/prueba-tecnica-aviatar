@@ -12,7 +12,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
 public class JwtTokenUtils {
-
+	
 	private final static String TOKEN_SEED = "4qhq8LrEBfYcaRHxhdb9zURb2rf8e7Ud";
 	
 	public static String createToken(String username) {
@@ -37,7 +37,7 @@ public class JwtTokenUtils {
 			String username = claims.getSubject();
 			
 			return new UsernamePasswordAuthenticationToken(username, null, Collections.emptyList());
-		} catch (JwtException e) {
+		} catch (JwtException exception) {
 			return null;
 		}
 	}

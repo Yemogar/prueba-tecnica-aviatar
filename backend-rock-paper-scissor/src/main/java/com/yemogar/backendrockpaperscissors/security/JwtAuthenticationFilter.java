@@ -6,13 +6,11 @@ import java.util.Collections;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yemogar.backendrockpaperscissors.model.UserCredentials;
-import com.yemogar.backendrockpaperscissors.model.UserDetailsImpl;
+import com.yemogar.backendrockpaperscissors.model.User;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -24,10 +22,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request,
 			HttpServletResponse response) throws AuthenticationException {
-		UserCredentials authCredentials = new UserCredentials();
+		User authCredentials = new User();
 		
 		try {
-			authCredentials = new ObjectMapper().readValue(request.getReader(), UserCredentials.class);
+			authCredentials = new ObjectMapper().readValue(request.getReader(), User.class);
 		} catch (IOException e) {}
 
 		UsernamePasswordAuthenticationToken usernamePAT = new UsernamePasswordAuthenticationToken(
@@ -43,7 +41,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
 
-		UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
+		UserDetails userDetails = (UserDetails) authResult.getPrincipal();
 		String token = JwtTokenUtils.createToken(userDetails.getUsername());
 	
 		response.addHeader("Authorization", "Bearer " + token);

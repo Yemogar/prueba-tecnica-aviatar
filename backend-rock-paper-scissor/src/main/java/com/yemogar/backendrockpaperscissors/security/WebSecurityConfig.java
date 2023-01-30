@@ -7,7 +7,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -15,11 +14,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.yemogar.backendrockpaperscissors.service.AuthService;
+
 @Configuration
 public class WebSecurityConfig implements WebMvcConfigurer {
 	
 	@Autowired
-	private UserDetailsService userDetailsService;
+	private AuthService authService;
 
 	private final JwtAuthorizationFilter jwtAuthorizationFilter;
 
@@ -39,8 +40,6 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 				.anyRequest()
 				.authenticated()
 				.and()
-				.httpBasic()
-				.and()
 				.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
@@ -52,7 +51,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 	@Bean
 	AuthenticationManager authManager(HttpSecurity http, PasswordEncoder passwordEncoder) throws Exception {
 		return http.getSharedObject(AuthenticationManagerBuilder.class)
-				.userDetailsService(userDetailsService)
+				.userDetailsService(authService)
 				.passwordEncoder(passwordEncoder())
 				.and()
 				.build();
@@ -70,8 +69,8 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         	.allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
     }
 
-	public WebSecurityConfig(UserDetailsService userDetailsService, JwtAuthorizationFilter jwtAuthorizationFilter) {
-		this.userDetailsService = userDetailsService;
+	public WebSecurityConfig(AuthService authService, JwtAuthorizationFilter jwtAuthorizationFilter) {
+		this.authService = authService;
 		this.jwtAuthorizationFilter = jwtAuthorizationFilter;
 	}
 	
