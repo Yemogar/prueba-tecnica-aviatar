@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { first } from 'rxjs';
+import { GameOptions } from '../../enums/game-options.enum';
 
 import { RockPaperScissorsSelectorComponent } from './rock-paper-scissors-selector.component';
 
@@ -19,5 +21,17 @@ describe('RockPaperScissorsSelectorComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('raise the option selected by the player when clicks', () => {
+    component.optionSelectedByPlayer
+      .pipe(
+        first()
+      )
+      .subscribe((optionSelectedByPlayer: GameOptions) => {
+        expect(optionSelectedByPlayer).toBe(GameOptions.Rock);
+      });
+
+    component.selectOption(GameOptions.Rock);
   });
 });

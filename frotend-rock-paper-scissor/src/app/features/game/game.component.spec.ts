@@ -1,4 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BattlegroundComponent } from './components/battleground/battleground.component';
+import { RockPaperScissorsSelectorComponent } from './components/rock-paper-scissors-selector/rock-paper-scissors-selector.component';
+import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 
 import { GameComponent } from './game.component';
 
@@ -8,7 +12,8 @@ describe('GameComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GameComponent ]
+      imports: [HttpClientModule],
+      declarations: [ GameComponent, ScoreboardComponent, RockPaperScissorsSelectorComponent, BattlegroundComponent ]
     })
     .compileComponents();
 
